@@ -71,4 +71,221 @@
             display: inline-block;
             width: 2.5px;
             height: 1.15em;
-            background-color: #
+            background-color: #ec4899;
+            vertical-align: middle;
+            margin-left: 3px;
+            animation: blink 0.85s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Pill Glassmorphism */
+        .skill-pill {
+            background: rgba(13, 8, 28, 0.92);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.38);
+            box-shadow: 0 8px 25px -4px rgba(0, 0, 0, 0.75), 0 0 15px rgba(139, 92, 246, 0.2);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .skill-pill:hover {
+            border-color: #ec4899;
+            transform: scale(1.08) !important;
+            box-shadow: 0 0 22px rgba(236, 72, 153, 0.5);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        }
+        .btn-gradient:hover {
+            opacity: 0.94;
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.45);
+        }
+
+        /* Popup Modal Animation */
+        .modal-enter {
+            animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.92) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body class="cosmic-bg min-h-screen relative selection:bg-pink-500 selection:text-white">
+
+    <!-- Constellation Network Canvas Background -->
+    <canvas id="networkCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-45"></canvas>
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-[#080312]/80 backdrop-blur-md border-b border-purple-900/25">
+        <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+            <!-- Top-Left Mini Avatar -->
+            <a href="#home" class="flex items-center gap-3 group text-left focus:outline-none">
+                <div class="relative w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-400 shadow-md shadow-purple-500/20 group-hover:scale-105 transition">
+                    <img src="profile.jpg" alt="Rajashekar Chinthala" class="w-full h-full rounded-full object-cover bg-slate-900">
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#080312]"></span>
+                </div>
+                <div class="hidden sm:block">
+                    <p class="font-bold text-sm tracking-wide text-white group-hover:text-pink-400 transition leading-none">Rajashekar Chinthala</p>
+                    <p class="text-[11px] mono text-purple-300/80 mt-1">Data Analyst</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-pink-400 transition">Home</a>
+                <a href="#projects" class="hover:text-pink-400 transition">Projects</a>
+                <a href="#tableau" class="text-pink-400 font-semibold transition flex items-center gap-1.5"><i class="fa-solid fa-chart-simple"></i>Tableau</a>
+                <a href="#skills" class="hover:text-pink-400 transition">Skills</a>
+                <a href="#certifications" class="hover:text-pink-400 transition">Certifications</a>
+                <a href="#contact" class="hover:text-pink-400 transition">Contact</a>
+            </nav>
+
+            <!-- Top-Right Controls -->
+            <div class="flex items-center gap-3">
+                <button id="themeBtn" onclick="toggleGlow()" aria-label="Toggle Cosmic Glow" class="w-10 h-10 rounded-full border border-purple-800/50 bg-[#120924]/80 flex items-center justify-center text-amber-400 hover:border-pink-500/50 transition">
+                    <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
+                </button>
+                <button id="mobileMenuBtn" aria-label="Open Menu" class="md:hidden w-10 h-10 rounded-full border border-purple-800/50 bg-[#120924]/80 flex items-center justify-center text-slate-200 hover:border-pink-500/50 transition">
+                    <i class="fa-solid fa-bars text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#0d061f]/95 backdrop-blur-xl border-b border-purple-900/40 px-6 py-5 space-y-3 text-sm">
+            <a href="#home" class="block py-2 text-slate-200 hover:text-pink-400">Home</a>
+            <a href="#projects" class="block py-2 text-slate-200 hover:text-pink-400">Projects</a>
+            <a href="#tableau" class="block py-2 text-pink-400 font-semibold flex items-center gap-2"><i class="fa-solid fa-chart-simple"></i>Tableau Dashboards</a>
+            <a href="#skills" class="block py-2 text-slate-200 hover:text-pink-400">Skills</a>
+            <a href="#certifications" class="block py-2 text-slate-200 hover:text-pink-400">Certifications</a>
+            <a href="#contact" class="block py-2 text-slate-200 hover:text-pink-400">Contact</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative z-10 pt-20 pb-16 px-5 max-w-6xl mx-auto min-h-screen flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14">
+        
+        <!-- ORBITAL AVATAR & FLOATING SKILL PILLS -->
+        <div class="order-1 lg:order-2 flex flex-col items-center justify-center w-full lg:w-1/2 mt-2 sm:mt-4 lg:mt-0">
+            <div class="relative w-[330px] h-[330px] sm:w-[400px] sm:h-[400px] flex items-center justify-center">
+                
+                <!-- Outer Rotating Dashed Orbit Ring -->
+                <div class="orbit-ring-1 absolute top-1/2 left-1/2 w-[285px] h-[285px] sm:w-[350px] sm:h-[350px] rounded-full border border-dashed border-purple-400/35 pointer-events-none">
+                    <span class="absolute -top-1.5 left-1/2 w-2.5 h-2.5 rounded-full bg-purple-400 shadow-[0_0_10px_#c084fc]"></span>
+                    <span class="absolute bottom-5 left-5 w-2 h-2 rounded-full bg-pink-400 shadow-[0_0_10px_#f472b6]"></span>
+                </div>
+
+                <!-- Inner Rotating Dashed Orbit Ring -->
+                <div class="orbit-ring-2 absolute top-1/2 left-1/2 w-[225px] h-[225px] sm:w-[280px] sm:h-[280px] rounded-full border border-dashed border-pink-400/25 pointer-events-none">
+                    <span class="absolute top-6 right-5 w-2 h-2 rounded-full bg-cyan-400/80 shadow-[0_0_8px_#22d3ee]"></span>
+                </div>
+
+                <!-- Center Circular Profile Picture -->
+                <div class="relative z-10 w-40 h-40 sm:w-48 sm:h-48 rounded-full p-1.5 bg-white shadow-[0_0_55px_rgba(168,85,247,0.5)] overflow-hidden">
+                    <img src="profile.jpg" alt="Rajashekar Chinthala" class="w-full h-full rounded-full object-cover">
+                </div>
+
+                <!-- Floating Badge 1: Python -->
+                <button onclick="showSkillPopup('Python', 'Automated ETL pipelines, exploratory data analysis (EDA) with Pandas & NumPy, and real-time iGaming event streaming scripts.')" class="skill-pill float-1 absolute top-4 left-6 sm:top-6 sm:left-10 z-20 px-4 py-1.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
+                    <i class="fa-brands fa-python text-amber-400 text-base"></i>
+                    <span>Python</span>
+                </button>
+
+                <!-- Floating Badge 2: SQL -->
+                <button onclick="showSkillPopup('SQL', 'Complex analytical queries, CTEs, window functions, cohort retention analysis, and relational database modeling.')" class="skill-pill float-2 absolute top-8 right-6 sm:top-10 sm:right-8 z-20 px-4 py-1.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
+                    <i class="fa-solid fa-database text-sky-400 text-sm"></i>
+                    <span>SQL</span>
+                </button>
+
+                <!-- Floating Badge 3: Power BI -->
+                <button onclick="showSkillPopup('Power BI', 'Interactive executive dashboards, advanced DAX measures, Power Query transformations, and KPI storytelling.')" class="skill-pill float-3 absolute top-1/2 -translate-y-4 -left-2 sm:left-0 z-20 px-3.5 py-1.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
+                    <i class="fa-solid fa-chart-column text-yellow-400 text-sm"></i>
+                    <span>Power BI</span>
+                </button>
+
+                <!-- Floating Badge 4: Snowflake -->
+                <button onclick="showSkillPopup('Snowflake', 'Cloud data warehousing, DDL schema architecture, star schemas, and high-performance iGaming KPI views.')" class="skill-pill float-4 absolute top-1/2 -translate-y-6 -right-3 sm:-right-2 z-20 px-3.5 py-1.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
+                    <i class="fa-regular fa-snowflake text-cyan-400 text-base"></i>
+                    <span>Snowflake</span>
+                </button>
+
+                <!-- Floating Badge 5: Analytics -->
+                <button onclick="showSkillPopup('Data Analytics', 'End-to-end business intelligence, GGR/NGR/ARPU metric tracking, VIP churn prediction, and statistical analysis.')" class="skill-pill float-2 absolute bottom-14 left-2 sm:bottom-16 sm:left-5 z-20 px-3.5 py-1.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
+                    <i class="fa-solid fa-chart-pie text-pink-400 text-sm"></i>
+                    <span>Analytics</span>
+                </button>
+
+                <!-- Floating Badge 6: Tableau -->
+                <button onclick="showSkillPopup('Tableau Portfolio', 'Interactive visual analytics portfolios, published dashboards, and executive reporting suites hosted live on Tableau Public.')" class="skill-pill float-1 absolute bottom-16 right-4 sm:bottom-20 sm:right-6 z-20 px-4 py-1.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
+                    <i class="fa-solid fa-chart-simple text-pink-400 text-base"></i>
+                    <span>Tableau</span>
+                </button>
+
+                <!-- Floating Badge 7: DataGrip -->
+                <button onclick="showSkillPopup('JetBrains DataGrip', 'Database administration, multi-schema SQL execution, and query profiling connected to Snowflake & MySQL.')" class="skill-pill float-3 absolute bottom-1 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-white whitespace-nowrap">
+                    <span class="px-1.5 py-0.5 rounded bg-gradient-to-tr from-emerald-400 to-purple-500 text-[10px] font-black text-black leading-none">DG</span>
+                    <span>DataGrip</span>
+                </button>
+
+            </div>
+            <p class="text-[11px] mono text-slate-400/80 mt-2">✨ Tip: Tap any skill badge to inspect</p>
+        </div>
+
+        <!-- TEXT INTRO & BIO -->
+        <div class="order-2 lg:order-1 w-full lg:w-1/2 space-y-4 text-left">
+            
+            <!-- Status Pill Badge -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#150a2a]/90 border border-purple-700/40 shadow-inner">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></span>
+                <span class="mono text-xs sm:text-sm text-teal-300 tracking-wide">Available for Data Analyst &amp; BI Roles</span>
+            </div>
+
+            <!-- Greeting & Gradient Name -->
+            <div class="pt-1">
+                <p class="mono text-slate-400 text-base sm:text-lg mb-1">Hi, I'm</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-rose-400 leading-tight">
+                    Rajashekar Chinthala
+                </h1>
+            </div>
+
+            <!-- Typewriter Role Subtitle -->
+            <div class="h-8 flex items-center">
+                <span id="typewriter" class="mono text-lg sm:text-xl text-slate-200 font-medium"></span>
+                <span class="cursor-blink"></span>
+            </div>
+
+            <!-- Detailed Bio Paragraph -->
+            <p class="text-slate-300/90 text-sm sm:text-base leading-relaxed pt-1">
+                Data Analyst &amp; BI Specialist specializing in end-to-end analytics pipelines, cloud data warehousing, and executive KPI reporting. Skilled in building scalable <strong class="text-white font-semibold">Snowflake SQL</strong> architectures, automating event streaming with <strong class="text-white font-semibold">Python</strong>, and designing interactive <strong class="text-white font-semibold">Tableau &amp; Power BI</strong> visual dashboards.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-4">
+                <a href="https://public.tableau.com/app/profile/rajashekar.chinthala" target="_blank" class="px-6 py-3 rounded-xl btn-gradient text-white font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-pink-500/25">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Tableau Projects</span>
+                </a>
+                <a href="#contact" class="px-5 py-3 rounded-xl bg-[#160b2e] border border-purple-700/50 hover:border-pink-500 text-slate-200 font-semibold text-sm transition flex items-center gap-2">
+                    <i class="fa-regular fa-envelope text-pink-400"></i>
+                    <span>Get In Touch</span>
+                </a>
+                <a href="https://github.com/Rajashekar098" target="_blank" aria-label="GitHub" class="w-11 h-11 rounded-xl bg-[#160b2e] border border-purple-700/50 hover:border-pink-500 flex items-center justify-center text-slate-200 hover:text-white transition">
+                    <i class="fa-brands fa-github text-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/rajashekar-chinthala/" target="_blank" aria-label="LinkedIn" class="w-11 h-11 rounded-xl bg-[#160b2e] border border-purple-700/50 hover:border-pink-500 flex items-center justify-center text-slate-200 hover:text-white transition">
+                    <i class="fa-brands fa-linkedin-in text-lg"></i>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- TABLEAU DASHBOARDS & PROJECTS SPOTLIGHT SECTION -->
+    <section id="tableau" class="relative z-10 py-20 px-5 max-w-6xl mx-auto border-t border-purple-900/30">
+        <div class="text-center mb-14">
+            <p class="mono text-pink-400 text-xs sm:text-sm uppercase tracking-widest mb-2">📊 BI Portfolio Spotlight</p>
+            <h2 class="text-3xl sm:text-4xl
