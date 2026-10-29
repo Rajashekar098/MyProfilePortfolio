@@ -34,11 +34,6 @@
                 linear-gradient(180deg, #0d051d 0%, #080312 100%);
         }
 
-        body.light-glow {
-            background: 
-                radial-gradient(circle at 50% 18%, rgba(168, 85, 247, 0.45) 0%, rgba(236, 72, 153, 0.25) 40%, #130726 80%);
-        }
-
         /* Floating Skill Pills Animation */
         @keyframes floatSlow {
             0%, 100% { transform: translateY(0px); }
@@ -94,6 +89,17 @@
             box-shadow: 0 0 22px rgba(236, 72, 153, 0.5);
         }
 
+        .glass-card {
+            background: rgba(18, 10, 36, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(236, 72, 153, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.25);
+        }
+
         .btn-gradient {
             background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
         }
@@ -103,4 +109,261 @@
         }
     </style>
 </head>
-<body class="cosmic-bg min-h-screen relative selection:bg-pink-
+<body class="cosmic-bg min-h-screen relative selection:bg-pink-500 selection:text-white">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#080312]/80 border-b border-purple-500/20">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-pink-500 to-purple-400 bg-clip-text text-transparent mono">
+                &lt;RC /&gt;
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-pink-400 transition">About</a>
+                <a href="#skills" class="hover:text-pink-400 transition">Skills</a>
+                <a href="#projects" class="hover:text-pink-400 transition">Projects</a>
+                <a href="#education" class="hover:text-pink-400 transition">Education & Certs</a>
+                <a href="#contact" class="hover:text-pink-400 transition">Contact</a>
+            </nav>
+            <a href="#contact" class="btn-gradient px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-white transition">
+                Hire Me
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Orbit Rings & Floating Pills -->
+    <section id="about" class="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 overflow-hidden">
+        <!-- Decorative Orbit Rings -->
+        <div class="orbit-ring-1 pointer-events-none absolute left-1/2 top-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-purple-500/15 border-dashed"></div>
+        <div class="orbit-ring-2 pointer-events-none absolute left-1/2 top-1/2 w-[350px] h-[350px] md:w-[520px] md:h-[520px] rounded-full border border-pink-500/15"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs font-medium mb-6">
+                <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+                Available for Data Analytics, BI & Full-Stack Roles
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                Hi, I'm <span class="bg-gradient-to-r from-pink-500 via-purple-400 to-indigo-400 bg-clip-text text-transparent">Rajashekar Chinthala</span>
+            </h1>
+
+            <p class="mono text-lg sm:text-xl text-pink-400 font-medium mb-6">
+                <span id="typewriter">Data Analyst & BI Specialist</span><span class="cursor-blink"></span>
+            </p>
+
+            <p class="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-10">
+                Bridging strategic business administration (MBA) with deep technical expertise in cloud data warehousing, SQL, Python, Power BI, and Java Full-Stack development to turn raw data into actionable business growth.
+            </p>
+
+            <!-- Floating Skill Pills -->
+            <div id="skills" class="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-2xl mx-auto mb-12">
+                <span class="skill-pill float-1 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
+                    <i class="fas fa-database text-pink-400"></i> SQL & Snowflake
+                </span>
+                <span class="skill-pill float-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
+                    <i class="fas fa-chart-pie text-purple-400"></i> Power BI & Tableau
+                </span>
+                <span class="skill-pill float-3 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
+                    <i class="fab fa-python text-indigo-400"></i> Python (Pandas, NumPy)
+                </span>
+                <span class="skill-pill float-4 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
+                    <i class="fab fa-java text-pink-400"></i> Java & Spring Boot
+                </span>
+                <span class="skill-pill float-1 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
+                    <i class="fas fa-file-excel text-emerald-400"></i> Advanced Excel
+                </span>
+                <span class="skill-pill float-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
+                    <i class="fas fa-briefcase text-amber-400"></i> MBA (HR & Project Mgmt)
+                </span>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#projects" class="btn-gradient px-7 py-3.5 rounded-xl font-semibold text-sm text-white shadow-lg transition">
+                    Explore My Work
+                </a>
+                <a href="https://github.com/Rajashekar098" target="_blank" class="px-7 py-3.5 rounded-xl font-semibold text-sm bg-white/5 hover:bg-white/10 border border-white/15 text-white transition flex items-center gap-2">
+                    <i class="fab fa-github"></i> GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-16 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-2">Featured Projects</h2>
+            <p class="text-slate-400 text-sm">End-to-end analytics pipelines and enterprise full-stack applications</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Project 1 -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30">
+                            Cloud Data Warehouse & BI
+                        </span>
+                        <i class="fas fa-chart-line text-xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">iGaming KPI Analytics Data Pipeline</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        Designed and modeled a cloud data warehouse pipeline to track player engagement, retention cohorts, and Gross Gaming Revenue (GGR) metrics using automated SQL transformations and Python analytics scripts.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-purple-500/20 text-xs mono text-purple-300">
+                    <span>#Snowflake</span>
+                    <span>#DataGrip</span>
+                    <span>#SQL</span>
+                    <span>#Python</span>
+                    <span>#PowerBI</span>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                            Full-Stack Web Application
+                        </span>
+                        <i class="fas fa-hotel text-xl text-pink-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Enterprise Hospitality Management System</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        Built a full-stack relational web application featuring room reservation workflows, customer management, billing automation, and RESTful API integration with a responsive frontend dashboard.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-purple-500/20 text-xs mono text-purple-300">
+                    <span>#Java</span>
+                    <span>#SpringBoot</span>
+                    <span>#Hibernate</span>
+                    <span>#MySQL</span>
+                    <span>#RESTAPI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section id="education" class="py-16 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Education -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-graduation-cap text-pink-400"></i> Education
+                </h3>
+                <div class="space-y-6">
+                    <div class="border-l-2 border-pink-500 pl-4">
+                        <h4 class="font-bold text-white">Master of Business Administration (MBA)</h4>
+                        <p class="text-xs text-purple-300 mb-1">Frederick University, Cyprus</p>
+                        <p class="text-xs text-slate-400">Specialization in HR & Project Management; Research on AI-Driven Performance Management.</p>
+                    </div>
+                    <div class="border-l-2 border-purple-500 pl-4">
+                        <h4 class="font-bold text-white">Bachelor of Commerce (B.Com)</h4>
+                        <p class="text-xs text-purple-300">Dr. B.R. Ambedkar Open University</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-certificate text-purple-400"></i> Verified Certifications
+                </h3>
+                <div class="space-y-5">
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-semibold text-sm text-white">IBM Data Analytics Professional Certificate</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">Issued via Credly</p>
+                        </div>
+                        <a href="https://www.credly.com/badges/3bc9a43a-1fef-495b-a336-b058f02bb37b/public_url" target="_blank" class="text-xs font-semibold text-pink-400 hover:underline flex items-center gap-1">
+                            Verify <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-semibold text-sm text-white">Java Full Stack Development Certification</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">EduBridge India (ID: EBEON1023850952)</p>
+                        </div>
+                        <a href="http://www.edubridgeindia.com/certificate-detail?enrollment_number=EBEON1023850952" target="_blank" class="text-xs font-semibold text-pink-400 hover:underline flex items-center gap-1">
+                            Verify <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 max-w-4xl mx-auto text-center">
+        <div class="glass-card rounded-3xl p-8 sm:p-12">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-3">Let's Connect</h2>
+            <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-xl mx-auto">
+                Open to Data Analyst, BI Developer, and Technical Support/Engineering opportunities in Cyprus and remotely.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
+                <a href="mailto:rajashekar.chinthala@gmail.com" class="p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-purple-500/20 flex items-center gap-4 transition">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-lg">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <p class="text-xs text-slate-400">Email</p>
+                        <p class="text-sm font-medium truncate">rajashekar.chinthala@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Rajashekar098" target="_blank" class="p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-purple-500/20 flex items-center gap-4 transition">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">GitHub</p>
+                        <p class="text-sm font-medium">github.com/Rajashekar098</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center text-xs text-slate-500 border-t border-purple-500/10">
+        © 2026 Rajashekar Chinthala. Built with Tailwind CSS & Hosted on GitHub Pages.
+    </footer>
+
+    <!-- Simple Typewriter Script -->
+    <script>
+        const roles = [
+            "Data Analyst & BI Specialist",
+            "SQL & Snowflake Developer",
+            "Java Full-Stack Certified",
+            "MBA Graduate"
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeEl = document.getElementById("typewriter");
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typeEl.textContent = currentRole.substring(0, charIndex--);
+            } else {
+                typeEl.textContent = currentRole.substring(0, charIndex++);
+            }
+
+            let speed = isDeleting ? 45 : 90;
+
+            if (!isDeleting && charIndex === currentRole.length + 1) {
+                speed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                speed = 400;
+            }
+            setTimeout(typeEffect, speed);
+        }
+        typeEffect();
+    </script>
+</body>
+</html>
