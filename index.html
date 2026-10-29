@@ -1,186 +1,426 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rajashekar Chinthala | Data Analyst & BI Specialist</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --bg-primary: #080312;
-            --text-main: #f8fafc;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
         }
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #080312;
+            background-image: 
+                radial-gradient(circle at 50% 15%, rgba(139, 92, 246, 0.35) 0%, rgba(236, 72, 153, 0.15) 35%, rgba(8, 3, 18, 0.98) 70%),
+                linear-gradient(180deg, #0d051d 0%, #080312 100%);
+            color: #f8fafc;
+            line-height: 1.6;
+            min-height: 100vh;
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
         }
         .mono {
             font-family: 'Fira Code', monospace;
         }
-        
-        /* Cosmic Ambient Background Glow */
-        .cosmic-bg {
-            background: 
-                radial-gradient(circle at 50% 18%, rgba(139, 92, 246, 0.32) 0%, rgba(236, 72, 153, 0.14) 35%, rgba(8, 3, 18, 0.98) 72%),
-                linear-gradient(180deg, #0d051d 0%, #080312 100%);
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        /* Floating Skill Pills Animation */
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(8, 3, 18, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
         }
-        @keyframes floatReverse {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(8px); }
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
         }
-        .float-1 { animation: floatSlow 3.5s ease-in-out infinite; }
-        .float-2 { animation: floatReverse 4.1s ease-in-out infinite 0.3s; }
-        .float-3 { animation: floatSlow 3.8s ease-in-out infinite 0.7s; }
-        .float-4 { animation: floatReverse 4.4s ease-in-out infinite 1.1s; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ec4899, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+        .nav-links a:hover {
+            color: #f472b6;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+        }
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.5);
+        }
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.14);
+        }
 
-        /* Rotating Orbit Rings */
-        @keyframes spinOrbit {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 140px 24px 80px;
+            text-align: center;
+            overflow: hidden;
         }
-        .orbit-ring-1 {
-            animation: spinOrbit 38s linear infinite;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: rgba(88, 28, 135, 0.45);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            color: #d8b4fe;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 24px;
         }
-        .orbit-ring-2 {
-            animation: spinOrbit 55s linear infinite reverse;
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ec4899;
+            box-shadow: 0 0 10px #ec4899;
         }
-
-        /* Typewriter Cursor */
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ec4899, #c084fc, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .role-line {
+            font-size: 1.2rem;
+            color: #f472b6;
+            font-weight: 600;
+            margin-bottom: 20px;
+            min-height: 1.8em;
+        }
         .cursor-blink {
             display: inline-block;
-            width: 2.5px;
-            height: 1.15em;
+            width: 3px;
+            height: 1.1em;
             background-color: #ec4899;
             vertical-align: middle;
-            margin-left: 3px;
+            margin-left: 4px;
             animation: blink 0.85s step-end infinite;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+        .hero-desc {
+            max-width: 680px;
+            margin: 0 auto 36px;
+            color: #cbd5e1;
+            font-size: 1.05rem;
+        }
 
-        /* Skill Pill Styling */
+        /* Floating Skill Pills */
+        .pills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 720px;
+            margin: 0 auto 40px;
+        }
         .skill-pill {
-            background: rgba(13, 8, 28, 0.92);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(168, 85, 247, 0.38);
-            box-shadow: 0 8px 25px -4px rgba(0, 0, 0, 0.75), 0 0 15px rgba(139, 92, 246, 0.2);
+            background: rgba(18, 10, 38, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            padding: 9px 18px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e9d5ff;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
             transition: all 0.25s ease;
         }
         .skill-pill:hover {
             border-color: #ec4899;
-            transform: scale(1.08) !important;
-            box-shadow: 0 0 22px rgba(236, 72, 153, 0.5);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.45);
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .float-1 { animation: floatSlow 3.5s ease-in-out infinite; }
+        .float-2 { animation: floatSlow 4.2s ease-in-out infinite 0.5s; }
+        .float-3 { animation: floatSlow 3.8s ease-in-out infinite 1s; }
+
+        .cta-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
+        /* Sections & Cards */
+        section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .section-sub {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
         .glass-card {
-            background: rgba(18, 10, 36, 0.65);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(139, 92, 246, 0.25);
-            transition: all 0.3s ease;
+            background: rgba(18, 10, 36, 0.75);
+            border: 1px solid rgba(139, 92, 246, 0.28);
+            border-radius: 20px;
+            padding: 28px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .glass-card:hover {
-            border-color: rgba(236, 72, 153, 0.5);
+            border-color: rgba(236, 72, 153, 0.55);
             box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.25);
         }
-
-        .btn-gradient {
-            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        .tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: rgba(236, 72, 153, 0.18);
+            color: #f9a8d4;
+            border: 1px solid rgba(236, 72, 153, 0.35);
+            margin-bottom: 14px;
         }
-        .btn-gradient:hover {
-            opacity: 0.94;
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.45);
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        .card-text {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            margin-bottom: 20px;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+            font-size: 0.78rem;
+            color: #c084fc;
+        }
+
+        /* Timeline & Certs */
+        .timeline-item {
+            border-left: 2px solid #ec4899;
+            padding-left: 16px;
+            margin-bottom: 20px;
+        }
+        .timeline-item h4 {
+            font-size: 1.05rem;
+            color: #ffffff;
+        }
+        .timeline-item .meta {
+            font-size: 0.82rem;
+            color: #c084fc;
+            margin-bottom: 4px;
+        }
+        .timeline-item p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        .cert-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .cert-box h4 {
+            font-size: 0.95rem;
+            color: #ffffff;
+        }
+        .cert-box p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        .verify-link {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #f472b6;
+            white-space: nowrap;
+        }
+        .verify-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Boxes */
+        .contact-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #ec4899;
+        }
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(236, 72, 153, 0.18);
+            color: #f472b6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            font-size: 0.8rem;
+            color: #64748b;
+            border-top: 1px solid rgba(168, 85, 247, 0.15);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
         }
     </style>
 </head>
-<body class="cosmic-bg min-h-screen relative selection:bg-pink-500 selection:text-white">
+<body>
 
     <!-- Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#080312]/80 border-b border-purple-500/20">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-pink-500 to-purple-400 bg-clip-text text-transparent mono">
-                &lt;RC /&gt;
-            </a>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-                <a href="#about" class="hover:text-pink-400 transition">About</a>
-                <a href="#skills" class="hover:text-pink-400 transition">Skills</a>
-                <a href="#projects" class="hover:text-pink-400 transition">Projects</a>
-                <a href="#education" class="hover:text-pink-400 transition">Education & Certs</a>
-                <a href="#contact" class="hover:text-pink-400 transition">Contact</a>
+    <header>
+        <div class="container nav-bar">
+            <a href="#" class="logo mono">&lt;RC /&gt;</a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education & Certs</a>
+                <a href="#contact">Contact</a>
             </nav>
-            <a href="#contact" class="btn-gradient px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-white transition">
-                Hire Me
-            </a>
+            <a href="#contact" class="btn-gradient">Hire Me</a>
         </div>
     </header>
 
-    <!-- Hero Section with Orbit Rings & Floating Pills -->
-    <section id="about" class="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 overflow-hidden">
-        <!-- Decorative Orbit Rings -->
-        <div class="orbit-ring-1 pointer-events-none absolute left-1/2 top-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-purple-500/15 border-dashed"></div>
-        <div class="orbit-ring-2 pointer-events-none absolute left-1/2 top-1/2 w-[350px] h-[350px] md:w-[520px] md:h-[520px] rounded-full border border-pink-500/15"></div>
-
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs font-medium mb-6">
-                <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+    <!-- Hero Section -->
+    <section id="about" class="hero">
+        <div class="container">
+            <div class="badge">
+                <span class="dot"></span>
                 Available for Data Analytics, BI & Full-Stack Roles
             </div>
 
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
-                Hi, I'm <span class="bg-gradient-to-r from-pink-500 via-purple-400 to-indigo-400 bg-clip-text text-transparent">Rajashekar Chinthala</span>
-            </h1>
+            <h1>Hi, I'm <span class="gradient-text">Rajashekar Chinthala</span></h1>
 
-            <p class="mono text-lg sm:text-xl text-pink-400 font-medium mb-6">
+            <p class="role-line mono">
                 <span id="typewriter">Data Analyst & BI Specialist</span><span class="cursor-blink"></span>
             </p>
 
-            <p class="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-10">
+            <p class="hero-desc">
                 Bridging strategic business administration (MBA) with deep technical expertise in cloud data warehousing, SQL, Python, Power BI, and Java Full-Stack development to turn raw data into actionable business growth.
             </p>
 
             <!-- Floating Skill Pills -->
-            <div id="skills" class="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-2xl mx-auto mb-12">
-                <span class="skill-pill float-1 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
-                    <i class="fas fa-database text-pink-400"></i> SQL & Snowflake
-                </span>
-                <span class="skill-pill float-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
-                    <i class="fas fa-chart-pie text-purple-400"></i> Power BI & Tableau
-                </span>
-                <span class="skill-pill float-3 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
-                    <i class="fab fa-python text-indigo-400"></i> Python (Pandas, NumPy)
-                </span>
-                <span class="skill-pill float-4 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
-                    <i class="fab fa-java text-pink-400"></i> Java & Spring Boot
-                </span>
-                <span class="skill-pill float-1 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
-                    <i class="fas fa-file-excel text-emerald-400"></i> Advanced Excel
-                </span>
-                <span class="skill-pill float-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-purple-200 flex items-center gap-2">
-                    <i class="fas fa-briefcase text-amber-400"></i> MBA (HR & Project Mgmt)
-                </span>
+            <div class="pills-wrap">
+                <span class="skill-pill float-1"><i class="fas fa-database" style="color:#f472b6;"></i> SQL & Snowflake</span>
+                <span class="skill-pill float-2"><i class="fas fa-chart-pie" style="color:#c084fc;"></i> Power BI & Tableau</span>
+                <span class="skill-pill float-3"><i class="fab fa-python" style="color:#818cf8;"></i> Python (Pandas, NumPy)</span>
+                <span class="skill-pill float-1"><i class="fab fa-java" style="color:#f472b6;"></i> Java & Spring Boot</span>
+                <span class="skill-pill float-2"><i class="fas fa-file-excel" style="color:#34d399;"></i> Advanced Excel</span>
+                <span class="skill-pill float-3"><i class="fas fa-briefcase" style="color:#fbbf24;"></i> MBA (HR & Project Mgmt)</span>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#projects" class="btn-gradient px-7 py-3.5 rounded-xl font-semibold text-sm text-white shadow-lg transition">
-                    Explore My Work
-                </a>
-                <a href="https://github.com/Rajashekar098" target="_blank" class="px-7 py-3.5 rounded-xl font-semibold text-sm bg-white/5 hover:bg-white/10 border border-white/15 text-white transition flex items-center gap-2">
+            <div class="cta-row">
+                <a href="#projects" class="btn-gradient">Explore My Work</a>
+                <a href="https://github.com/Rajashekar098" target="_blank" class="btn-outline">
                     <i class="fab fa-github"></i> GitHub Profile
                 </a>
             </div>
@@ -188,106 +428,99 @@
     </section>
 
     <!-- Featured Projects Section -->
-    <section id="projects" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-2">Featured Projects</h2>
-            <p class="text-slate-400 text-sm">End-to-end analytics pipelines and enterprise full-stack applications</p>
-        </div>
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-sub">End-to-end analytics pipelines and enterprise full-stack applications</p>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Project 1 -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30">
-                            Cloud Data Warehouse & BI
-                        </span>
-                        <i class="fas fa-chart-line text-xl text-purple-400"></i>
+            <div class="grid-2">
+                <!-- Project 1 -->
+                <div class="glass-card">
+                    <div>
+                        <span class="tag">Cloud Data Warehouse & BI</span>
+                        <h3 class="card-title">iGaming KPI Analytics Data Pipeline</h3>
+                        <p class="card-text">
+                            Designed and modeled a cloud data warehouse pipeline to track player engagement, retention cohorts, and Gross Gaming Revenue (GGR) metrics using automated SQL transformations and Python analytics scripts.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">iGaming KPI Analytics Data Pipeline</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                        Designed and modeled a cloud data warehouse pipeline to track player engagement, retention cohorts, and Gross Gaming Revenue (GGR) metrics using automated SQL transformations and Python analytics scripts.
-                    </p>
+                    <div class="tech-tags mono">
+                        <span>#Snowflake</span>
+                        <span>#DataGrip</span>
+                        <span>#SQL</span>
+                        <span>#Python</span>
+                        <span>#PowerBI</span>
+                    </div>
                 </div>
-                <div class="flex flex-wrap gap-2 pt-4 border-t border-purple-500/20 text-xs mono text-purple-300">
-                    <span>#Snowflake</span>
-                    <span>#DataGrip</span>
-                    <span>#SQL</span>
-                    <span>#Python</span>
-                    <span>#PowerBI</span>
-                </div>
-            </div>
 
-            <!-- Project 2 -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
-                            Full-Stack Web Application
-                        </span>
-                        <i class="fas fa-hotel text-xl text-pink-400"></i>
+                <!-- Project 2 -->
+                <div class="glass-card">
+                    <div>
+                        <span class="tag">Full-Stack Web Application</span>
+                        <h3 class="card-title">Enterprise Hospitality Management System</h3>
+                        <p class="card-text">
+                            Built a full-stack relational web application featuring room reservation workflows, customer management, billing automation, and RESTful API integration with a responsive frontend dashboard.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Enterprise Hospitality Management System</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                        Built a full-stack relational web application featuring room reservation workflows, customer management, billing automation, and RESTful API integration with a responsive frontend dashboard.
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-2 pt-4 border-t border-purple-500/20 text-xs mono text-purple-300">
-                    <span>#Java</span>
-                    <span>#SpringBoot</span>
-                    <span>#Hibernate</span>
-                    <span>#MySQL</span>
-                    <span>#RESTAPI</span>
+                    <div class="tech-tags mono">
+                        <span>#Java</span>
+                        <span>#SpringBoot</span>
+                        <span>#Hibernate</span>
+                        <span>#MySQL</span>
+                        <span>#RESTAPI</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Education & Certifications Section -->
-    <section id="education" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Education -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8">
-                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
-                    <i class="fas fa-graduation-cap text-pink-400"></i> Education
-                </h3>
-                <div class="space-y-6">
-                    <div class="border-l-2 border-pink-500 pl-4">
-                        <h4 class="font-bold text-white">Master of Business Administration (MBA)</h4>
-                        <p class="text-xs text-purple-300 mb-1">Frederick University, Cyprus</p>
-                        <p class="text-xs text-slate-400">Specialization in HR & Project Management; Research on AI-Driven Performance Management.</p>
-                    </div>
-                    <div class="border-l-2 border-purple-500 pl-4">
-                        <h4 class="font-bold text-white">Bachelor of Commerce (B.Com)</h4>
-                        <p class="text-xs text-purple-300">Dr. B.R. Ambedkar Open University</p>
+    <section id="education">
+        <div class="container">
+            <div class="grid-2">
+                <!-- Education -->
+                <div class="glass-card">
+                    <div>
+                        <h3 class="card-title" style="margin-bottom: 24px;">
+                            <i class="fas fa-graduation-cap" style="color:#f472b6; margin-right: 8px;"></i> Education
+                        </h3>
+                        <div class="timeline-item">
+                            <h4>Master of Business Administration (MBA)</h4>
+                            <div class="meta">Frederick University, Cyprus</div>
+                            <p>Specialization in HR & Project Management; Research on AI-Driven Performance Management.</p>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: #a855f7; margin-bottom: 0;">
+                            <h4>Bachelor of Commerce (B.Com)</h4>
+                            <div class="meta">Dr. B.R. Ambedkar Open University</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Certifications -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8">
-                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
-                    <i class="fas fa-certificate text-purple-400"></i> Verified Certifications
-                </h3>
-                <div class="space-y-5">
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
-                        <div>
-                            <h4 class="font-semibold text-sm text-white">IBM Data Analytics Professional Certificate</h4>
-                            <p class="text-xs text-slate-400 mt-0.5">Issued via Credly</p>
+                <!-- Certifications -->
+                <div class="glass-card">
+                    <div>
+                        <h3 class="card-title" style="margin-bottom: 24px;">
+                            <i class="fas fa-certificate" style="color:#c084fc; margin-right: 8px;"></i> Verified Certifications
+                        </h3>
+                        
+                        <div class="cert-box">
+                            <div>
+                                <h4>IBM Data Analytics Professional Certificate</h4>
+                                <p>Issued via Credly</p>
+                            </div>
+                            <a href="https://www.credly.com/badges/3bc9a43a-1fef-495b-a336-b058f02bb37b/public_url" target="_blank" class="verify-link">
+                                Verify <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
-                        <a href="https://www.credly.com/badges/3bc9a43a-1fef-495b-a336-b058f02bb37b/public_url" target="_blank" class="text-xs font-semibold text-pink-400 hover:underline flex items-center gap-1">
-                            Verify <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
 
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
-                        <div>
-                            <h4 class="font-semibold text-sm text-white">Java Full Stack Development Certification</h4>
-                            <p class="text-xs text-slate-400 mt-0.5">EduBridge India (ID: EBEON1023850952)</p>
+                        <div class="cert-box" style="margin-bottom: 0;">
+                            <div>
+                                <h4>Java Full Stack Development Certification</h4>
+                                <p>EduBridge India (ID: EBEON1023850952)</p>
+                            </div>
+                            <a href="http://www.edubridgeindia.com/certificate-detail?enrollment_number=EBEON1023850952" target="_blank" class="verify-link">
+                                Verify <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
-                        <a href="http://www.edubridgeindia.com/certificate-detail?enrollment_number=EBEON1023850952" target="_blank" class="text-xs font-semibold text-pink-400 hover:underline flex items-center gap-1">
-                            Verify <i class="fas fa-external-link-alt"></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -295,42 +528,40 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 px-6 max-w-4xl mx-auto text-center">
-        <div class="glass-card rounded-3xl p-8 sm:p-12">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-3">Let's Connect</h2>
-            <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-                Open to Data Analyst, BI Developer, and Technical Support/Engineering opportunities in Cyprus and remotely.
-            </p>
+    <section id="contact">
+        <div class="container">
+            <div class="glass-card" style="text-align: center; max-width: 760px; margin: 0 auto;">
+                <h2 class="section-title" style="margin-bottom: 8px;">Let's Connect</h2>
+                <p class="section-sub" style="margin-bottom: 28px;">
+                    Open to Data Analyst, BI Developer, and Technical Support/Engineering opportunities.
+                </p>
 
-            <div class="grid sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
-                <a href="mailto:rajashekar.chinthala@gmail.com" class="p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-purple-500/20 flex items-center gap-4 transition">
-                    <div class="w-10 h-10 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-lg">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="overflow-hidden">
-                        <p class="text-xs text-slate-400">Email</p>
-                        <p class="text-sm font-medium truncate">rajashekar.chinthala@gmail.com</p>
-                    </div>
-                </a>
+                <div class="grid-2" style="text-align: left;">
+                    <a href="mailto:rajashekar.chinthala@gmail.com" class="contact-item">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <div style="overflow: hidden;">
+                            <div style="font-size: 0.75rem; color: #94a3b8;">Email</div>
+                            <div style="font-size: 0.9rem; font-weight: 600; text-overflow: ellipsis; overflow: hidden;">rajashekar.chinthala@gmail.com</div>
+                        </div>
+                    </a>
 
-                <a href="https://github.com/Rajashekar098" target="_blank" class="p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-purple-500/20 flex items-center gap-4 transition">
-                    <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-slate-400">GitHub</p>
-                        <p class="text-sm font-medium">github.com/Rajashekar098</p>
-                    </div>
-                </a>
+                    <a href="https://github.com/Rajashekar098" target="_blank" class="contact-item">
+                        <div class="icon-box"><i class="fab fa-github"></i></div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: #94a3b8;">GitHub</div>
+                            <div style="font-size: 0.9rem; font-weight: 600;">github.com/Rajashekar098</div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-8 text-center text-xs text-slate-500 border-t border-purple-500/10">
-        © 2026 Rajashekar Chinthala. Built with Tailwind CSS & Hosted on GitHub Pages.
+    <footer>
+        © 2026 Rajashekar Chinthala. Hosted on GitHub Pages.
     </footer>
 
-    <!-- Simple Typewriter Script -->
+    <!-- Typewriter Script -->
     <script>
         const roles = [
             "Data Analyst & BI Specialist",
@@ -344,6 +575,7 @@
         const typeEl = document.getElementById("typewriter");
 
         function typeEffect() {
+            if (!typeEl) return;
             const currentRole = roles[roleIndex];
             if (isDeleting) {
                 typeEl.textContent = currentRole.substring(0, charIndex--);
